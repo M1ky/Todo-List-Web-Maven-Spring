@@ -9,10 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 @Slf4j
-public class WebAppInitializer implements WebApplicationInitializer
-{
+public class WebAppInitializer implements WebApplicationInitializer {
 
-    private static final String DISPATCHER_SERVLET_NAME="dispatcher";
+    private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
 
     @Override
     public void onStartup(javax.servlet.ServletContext servletContext) throws ServletException {
