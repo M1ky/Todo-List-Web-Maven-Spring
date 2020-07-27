@@ -1,3 +1,5 @@
+com/mike/service/DemoServiceImpl.class
 com/mike/controller/DemoController.class
 com/mike/config/WebConfig.class
 com/mike/config/WebAppInitializer.class
+com/mike/service/DemoService.class
