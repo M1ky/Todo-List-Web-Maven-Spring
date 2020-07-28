@@ -1,0 +1,48 @@
+Dispatcher Servlet is the front controller of spring MVC, and is used to dispatch
+HTTP requests to other controlers.
+
+
+What is ViewResolver and View?
+The Spring MVC defines ViewResolver and View interfaces which enable us to
+render models in a browser without forcing us to use specific view technology.
+
+View REsolver procides mapping between view names and actual views.
+
+
+What are mvc request processing steps?
+1. Dispatcher servlet(DS) receives a request from a browser.
+2. DS needs to identify which controller will handle the request, so it uses handler mapping
+to find the correct controller.
+3. Handler mapping returns the specific handler method that handles the request.
+For example /hello mapping returns a hello() method.
+4. DS calls the specific handler method - the method in the controller is called.
+5. The handler method returns model and a view name.
+6. Now the DS had view name, but it still needs to determine the view file to use.
+To determine the view file it find the view resolver and calls it using the logical view name.
+7. After the View Resolver(VR) receives the logical view name (step 6), it needs to find a .jsp file.
+After finding the jsp file the VR returns it to the DS.
+8. DS executes the view received from VR.
+9. The view is rendered and it than returns the content back to DS.
+10. DS sends the response back to the browser, after which we can see the page in the browser.
+
+
+What is a ModelInterface?
+
+A Model interface defines a holder for Model Attributes and is primarily designed
+for adding attributes to the model. Now that model is exposed to the view, which means
+that we can access the attributes in our jsp files.
+
+
+What is a model?
+
+In general a model represents data that will be passed from a controller method
+to the view, as well as data passed from the view back to the controller method
+where the forms included in the view.
+
+
+What is and how to use @RequestParam annotation?
+
+When we use parameter annotation a parameter is required (duuh).
+With query parameters we can pass data from the browser into controller method.
+Spring will automatically bind the query parameters so that we can use them in a method.
+
