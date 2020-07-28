@@ -1,7 +1,6 @@
 package com.mike.controller;
 
 import com.mike.service.DemoService;
-import com.mike.service.DemoServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,43 +14,43 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DemoController
 {
-    private final DemoService demoService;
+	private final DemoService demoService;
 
-    @Autowired
-    public DemoController(DemoService demoService)
-    {
-        this.demoService = demoService;
-    }
+	@Autowired
+	public DemoController(DemoService demoService)
+	{
+		this.demoService = demoService;
+	}
 
-    // http://localhost:8080/todo-list/hello
-    @ResponseBody
-    @GetMapping("/hello")
-    public String hello()
-    {
-        return "hello";
-    }
+	// http://localhost:8080/todo-list/hello
+	@ResponseBody
+	@GetMapping("/hello")
+	public String hello()
+	{
+		return "hello";
+	}
 
-    // http://localhost:8080/todo-list/welcome
-    // http://localhost:8080/todo-list/welcome?user=mike
-    // http://localhost:8080/todo-list/welcome?user=mike&age=25
-    @GetMapping("welcome")
-    public String welcome(@RequestParam String user, @RequestParam int age, Model model)
-    {
-        model.addAttribute("helloMessage", demoService.getHelloMessage(user));
-        model.addAttribute("age", age);
+	// http://localhost:8080/todo-list/welcome
+	// http://localhost:8080/todo-list/welcome?user=mike
+	// http://localhost:8080/todo-list/welcome?user=mike&age=25
+	@GetMapping("welcome")
+	public String welcome(@RequestParam String user, @RequestParam int age, Model model)
+	{
+		model.addAttribute("helloMessage", demoService.getHelloMessage(user));
+		model.addAttribute("age", age);
 
-        log.info("model={}", model);
+		log.info("model={}", model);
 
 
-        // prefix + return value + suffix
-        // /WEB-INF/view/welcome.jsp
-        return "welcome";
-    }
+		// prefix + return value + suffix
+		// /WEB-INF/view/welcome.jsp
+		return "welcome";
+	}
 
-    @ModelAttribute("welcomeMessage")
-    public String welcomeMessage()
-    {
-        log.info("welcomeMessage() called");
-        return demoService.getWelcomeMessage();
-    }
+	@ModelAttribute("welcomeMessage")
+	public String welcomeMessage()
+	{
+		log.info("welcomeMessage() called");
+		return demoService.getWelcomeMessage();
+	}
 }

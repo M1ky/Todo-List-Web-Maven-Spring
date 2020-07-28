@@ -1,48 +1,96 @@
-Dispatcher Servlet is the front controller of spring MVC, and is used to dispatch
-HTTP requests to other controlers.
+1. What is a MVC?
+
+MVC stands for Model, View, Controller and it is a design pattern.
 
 
-What is ViewResolver and View?
+2. What are all components responsible for?
+
+Model (M): Models are responsible for managing the application's data, business logic and business rules.
+
+View (V): The view is an output representation of information, for example displaying information to the user.
+
+Controller (C): The Controller is responsible for invoking Models to perform business logic and then updating the view based on the Models output.
+
+
+3. What's maven WAR plug-in and what's a WAR file?
+
+WAR (Web Application aRchive) is a file format similar to .jar. The difference is that war contains resources necessary for developing web applications.
+
+
+4. What's a dispatcher servlet?
+
+Dispatcher servlet plays the role of Front Controller. It receives all of the requests for your application.
+
+HTTP request 	->	Dispatcher Servlet
+							|
+					Controller (java class)
+							|
+HTTP response 	<-			View
+
+
+5. Simple Controller
+
+We can map requests coming from Dispatcher Servlet to methods in classes annotated with @Controller.
+
+Annotated controllers have flexible method signatures and do not have to extend base classes or implement specific interfaces.
+
+The @RequesMapping annotation is used to map requests to controller methods.
+It has various attributes to match by URL, HTTP method, request parameters, headers, and media types.
+
+
+6. What is JSTL?
+
+The JavaServerPages Standard Tag Library (JSTL) is a collection of useful JSP tags which encapsulate the core functionality common to many JSP applications.
+JSTL has support for common structural tasks, such as iteration and conditionals, tags for manipulating XML documents, SQL tags and so on.
+
+
+7. What is ViewResolver and View?
+
 The Spring MVC defines ViewResolver and View interfaces which enable us to
 render models in a browser without forcing us to use specific view technology.
 
-View REsolver procides mapping between view names and actual views.
+View Resolver provides mapping between view names and actual views.
 
 
-What are mvc request processing steps?
-1. Dispatcher servlet(DS) receives a request from a browser.
-2. DS needs to identify which controller will handle the request, so it uses handler mapping
-to find the correct controller.
-3. Handler mapping returns the specific handler method that handles the request.
-For example /hello mapping returns a hello() method.
-4. DS calls the specific handler method - the method in the controller is called.
-5. The handler method returns model and a view name.
-6. Now the DS had view name, but it still needs to determine the view file to use.
-To determine the view file it find the view resolver and calls it using the logical view name.
-7. After the View Resolver(VR) receives the logical view name (step 6), it needs to find a .jsp file.
-After finding the jsp file the VR returns it to the DS.
-8. DS executes the view received from VR.
-9. The view is rendered and it than returns the content back to DS.
-10. DS sends the response back to the browser, after which we can see the page in the browser.
+8. What are mvc request processing steps?
+
+	1. Dispatcher servlet(DS) receives a request from a browser.
+	2. DS needs to identify which controller will handle the request, so it uses handler mapping
+		to find the correct controller.
+	3. Handler mapping returns the specific handler method that handles the request.
+		For example /hello mapping returns a hello() method.
+	4. DS calls the specific handler method - the method in the controller is called.
+	5. The handler method returns model and a view name.
+	6. Now the DS had view name, but it still needs to determine the view file to use.
+		To determine the view file it find the view resolver and calls it using the logical view name.
+	7. After the View Resolver(VR) receives the logical view name (step 6), it needs to find a .jsp file.
+		After finding the jsp file the VR returns it to the DS.
+	8. DS executes the view received from VR.
+	9. The view is rendered and it than returns the content back to DS.
+	10. DS sends the response back to the browser, after which we can see the page in the browser.
 
 
-What is a ModelInterface?
+9. What is a ModelInterface?
 
 A Model interface defines a holder for Model Attributes and is primarily designed
 for adding attributes to the model. Now that model is exposed to the view, which means
 that we can access the attributes in our jsp files.
 
 
-What is a model?
+10. What is a model?
 
 In general a model represents data that will be passed from a controller method
 to the view, as well as data passed from the view back to the controller method
 where the forms included in the view.
 
 
-What is and how to use @RequestParam annotation?
+11. What is and how to use @RequestParam annotation?
 
-When we use parameter annotation a parameter is required (duuh).
+When we use @RequestParam annotation a parameter is required (duuh).
 With query parameters we can pass data from the browser into controller method.
 Spring will automatically bind the query parameters so that we can use them in a method.
 
+
+12. What is a Post redirect.
+
+After using POST method we redirect to a different view (page). It can be used for example  when we have two different views: one for adding an item, one for displaying all items. We can than use post redirect after adding an item to display all of them.
