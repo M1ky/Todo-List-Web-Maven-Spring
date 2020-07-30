@@ -1,5 +1,6 @@
 package com.mike.config;
 
+import com.mike.util.ViewNames;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,9 +30,10 @@ public class WebConfig implements WebMvcConfigurer
         return viewResolver;
     }
 
+    // adding automated view controller that is preconfigured with our home view
     @Override
     public void addViewControllers(ViewControllerRegistry registry)
     {
-
+        registry.addViewController("/").setViewName(ViewNames.HOME);
     }
 }

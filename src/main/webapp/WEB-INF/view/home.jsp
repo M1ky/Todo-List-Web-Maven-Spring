@@ -1,6 +1,5 @@
 <%--enable to use jstl tags--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page import="com.mike.util.Mappings" %>
 
 <html>
